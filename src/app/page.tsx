@@ -333,7 +333,7 @@ export default function Home() {
               className="signal-wheel-image"
             />
             <p>
-              Signal Scan™ maps your business across six signals that shape how
+              Signal Scan™ maps your business across five signals that shape how
               customers — and AI — find, trust, and choose you.
             </p>
           </div>
