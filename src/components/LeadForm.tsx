@@ -1,15 +1,19 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
-type SubmitState = "idle" | "submitting" | "success" | "error";
+type SubmitState = "idle" | "submitting" | "error";
 
 export default function LeadForm() {
+  const router = useRouter();
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitState("submitting");
+    setErrorMessage(null);
 
     const form = event.currentTarget;
     const formData = new FormData(form);
@@ -24,13 +28,22 @@ export default function LeadForm() {
       });
 
       if (!response.ok) {
-        throw new Error("Unable to submit request");
+        const payload = (await response.json().catch(() => null)) as
+          | { message?: string }
+          | null;
+        throw new Error(payload?.message ?? "Unable to submit request");
       }
 
       form.reset();
-      setSubmitState("success");
-    } catch {
+      sessionStorage.setItem("signalScanSubmitted", "1");
+      router.push("/thank-you");
+    } catch (error) {
       setSubmitState("error");
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
     }
   }
 
@@ -72,16 +85,10 @@ export default function LeadForm() {
           ? "Sending..."
           : "Request My Signal Scan"}
       </button>
-      {submitState === "success" && (
-        <p className="form-status success">
-          Thanks. We&apos;ll review your signal profile and follow up with clear
-          next steps.
-        </p>
-      )}
       {submitState === "error" && (
         <p className="form-status error">
-          Something went wrong. Please try again or contact
-          ThroughPointMarketing.com.
+          {errorMessage ??
+            "Something went wrong. Please try again or contact ThroughPointMarketing.com."}
         </p>
       )}
     </form>
