@@ -1,6 +1,7 @@
 import Image from "next/image";
 import LeadForm from "@/components/LeadForm";
 import StickyCta from "@/components/StickyCta";
+import { siteConfig, siteUrl } from "@/lib/site";
 
 const industries = [
   "Dental Practices",
@@ -128,13 +129,20 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://throughpointmarketing.com/#organization",
-      name: "ThroughPoint Marketing",
-      url: "https://throughpointmarketing.com",
-      logo: "https://throughpointmarketing.com/throughpoint-logo-transparent.png",
+      "@id": `${siteUrl}/#organization`,
+      name: siteConfig.name,
+      url: siteUrl,
+      logo: `${siteUrl}${siteConfig.logoPath}`,
+      email: siteConfig.contactEmail,
       description:
         "ThroughPoint Marketing helps local businesses improve AI readiness, digital trust signals, visibility, authority, and customer experience.",
       areaServed: "United States",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: siteConfig.contactEmail,
+        availableLanguage: "English",
+      },
       knowsAbout: [
         "AI readiness",
         "AI search optimization",
@@ -145,20 +153,35 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://throughpointmarketing.com/#website",
-      url: "https://throughpointmarketing.com",
-      name: "ThroughPoint Marketing",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: siteConfig.name,
+      inLanguage: "en-US",
       publisher: {
-        "@id": "https://throughpointmarketing.com/#organization",
+        "@id": `${siteUrl}/#organization`,
       },
     },
     {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/#webpage`,
+      url: siteUrl,
+      name: siteConfig.defaultTitle,
+      description: siteConfig.description,
+      isPartOf: {
+        "@id": `${siteUrl}/#website`,
+      },
+      about: {
+        "@id": `${siteUrl}/#organization`,
+      },
+      inLanguage: "en-US",
+    },
+    {
       "@type": "Service",
-      "@id": "https://throughpointmarketing.com/#signal-scan",
+      "@id": `${siteUrl}/#signal-scan`,
       name: "Personalized Signal Scan",
       serviceType: "AI readiness and generative engine optimization audit",
       provider: {
-        "@id": "https://throughpointmarketing.com/#organization",
+        "@id": `${siteUrl}/#organization`,
       },
       areaServed: "United States",
       audience: {
@@ -170,7 +193,7 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "@id": "https://throughpointmarketing.com/#faq",
+      "@id": `${siteUrl}/#faq`,
       mainEntity: faqs.map((faq) => ({
         "@type": "Question",
         name: faq.question,
@@ -419,8 +442,8 @@ export default function Home() {
             ))}
           </ul>
           <LeadForm />
-          <a className="site-link" href="https://ThroughPointMarketing.com">
-            ThroughPointMarketing.com
+          <a className="site-link" href={siteUrl}>
+            throughpointmarketing.com
           </a>
         </div>
       </section>

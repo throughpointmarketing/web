@@ -1,54 +1,57 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import { siteConfig, siteUrl } from "@/lib/site";
 import "./globals.css";
 
-const siteUrl = "https://throughpointmarketing.com";
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+});
+
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "ThroughPoint Marketing | AI Readiness for Local Businesses",
-    template: "%s | ThroughPoint Marketing",
+    default: siteConfig.defaultTitle,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "ThroughPoint Marketing helps local businesses improve trust, authority, visibility, and customer experience signals so they can be found by AI and chosen by customers.",
-  applicationName: "ThroughPoint Marketing",
-  authors: [{ name: "ThroughPoint Marketing" }],
-  creator: "ThroughPoint Marketing",
-  publisher: "ThroughPoint Marketing",
-  keywords: [
-    "AI readiness",
-    "AI search optimization",
-    "generative engine optimization",
-    "GEO marketing",
-    "local business marketing",
-    "digital trust signals",
-    "Signal Scan",
-  ],
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  keywords: [...siteConfig.keywords],
   alternates: {
     canonical: siteUrl,
   },
+  icons: {
+    icon: siteConfig.logoPath,
+    apple: siteConfig.logoPath,
+  },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
+    locale: siteConfig.locale,
     url: siteUrl,
-    siteName: "ThroughPoint Marketing",
-    title: "ThroughPoint Marketing | AI Readiness for Local Businesses",
-    description:
-      "Get found by AI and chosen by customers with a personalized Signal Scan and AI readiness roadmap.",
+    siteName: siteConfig.name,
+    title: siteConfig.defaultTitle,
+    description: siteConfig.ogDescription,
     images: [
       {
-        url: "/ai-search-phone-v2.png",
-        width: 577,
-        height: 651,
-        alt: "AI search on a phone",
+        url: siteConfig.ogImagePath,
+        width: siteConfig.ogImageWidth,
+        height: siteConfig.ogImageHeight,
+        alt: siteConfig.ogImageAlt,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ThroughPoint Marketing | AI Readiness for Local Businesses",
-    description:
-      "Get found by AI and chosen by customers with a personalized Signal Scan and AI readiness roadmap.",
-    images: ["/ai-search-phone-v2.png"],
+    title: siteConfig.defaultTitle,
+    description: siteConfig.ogDescription,
+    images: [siteConfig.ogImagePath],
   },
   robots: {
     index: true,
@@ -61,6 +64,18 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  ...(googleSiteVerification
+    ? {
+        verification: {
+          google: googleSiteVerification,
+        },
+      }
+    : {}),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#071d3d",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -69,7 +84,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <body>{children}</body>
     </html>
   );

@@ -1,12 +1,11 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = "https://throughpointmarketing.com";
+import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: siteUrl,
-      lastModified: new Date(),
+      lastModified: "2026-07-03",
       changeFrequency: "monthly",
       priority: 1,
     },
