@@ -2,6 +2,7 @@ import { Resend } from "resend";
 
 export const SIGNAL_SCAN_RECIPIENTS = [
   "vlad.tsigler@throughpointmarketing.com",
+  "allison.engman@throughpointmarketing.com",
 ] as const;
 
 export type SignalScanSubmission = {
