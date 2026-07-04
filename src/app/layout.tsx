@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Inter } from "next/font/google";
 import { siteConfig, siteUrl } from "@/lib/site";
 import "./globals.css";
@@ -10,6 +11,7 @@ const inter = Inter({
 });
 
 const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? siteConfig.gtmId;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -85,6 +87,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+      <GoogleTagManager gtmId={gtmId} />
       <body>{children}</body>
     </html>
   );

@@ -23,6 +23,7 @@ export const siteConfig = {
     "Signal Scan",
     "ThroughPoint Marketing",
   ],
+  gtmId: "GTM-W3XRCSST",
 } as const;
 
 export const siteUrl = siteConfig.url;

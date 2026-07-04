@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { pushDataLayerEvent } from "@/lib/analytics";
 
 type SubmitState = "idle" | "submitting" | "error";
 
@@ -35,6 +36,10 @@ export default function LeadForm() {
       }
 
       form.reset();
+      pushDataLayerEvent("signal_scan_submit", {
+        form_name: "signal_scan",
+        form_location: "contact",
+      });
       sessionStorage.setItem("signalScanSubmitted", "1");
       router.push("/thank-you");
     } catch (error) {
