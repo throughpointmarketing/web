@@ -1,5 +1,6 @@
 import Image from "next/image";
 import LeadForm from "@/components/LeadForm";
+import SignalScanQuiz from "@/components/SignalScanQuiz";
 import StickyCta from "@/components/StickyCta";
 import { siteConfig, siteUrl } from "@/lib/site";
 
@@ -370,6 +371,16 @@ export default function Home() {
               </article>
             ))}
           </div>
+        </div>
+        <div className="section-inner signal-quiz-section" id="ai-signal-quiz">
+          <h3 className="signal-quiz-heading">
+            How strong is your <span>AI signal</span>?
+          </h3>
+          <p className="signal-quiz-intro">
+            Answer six quick questions and get an instant score — no email
+            required.
+          </p>
+          <SignalScanQuiz />
         </div>
         <div className="section-inner">
           <div className="cta-row">

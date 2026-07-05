@@ -43,7 +43,8 @@ a {
 #signal-scan,
 #framework,
 #faq,
-#signal-form {
+#signal-form,
+#ai-signal-quiz {
   scroll-margin-top: 96px;
 }
 
@@ -334,6 +335,33 @@ a {
   font-size: var(--text-xs);
   line-height: 1.32;
   font-weight: 700;
+}
+
+.signal-quiz-section {
+  margin-top: 48px;
+}
+
+.signal-quiz-heading {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-size: var(--heading-section);
+  line-height: 1.08;
+  font-weight: 900;
+  text-align: center;
+}
+
+.signal-quiz-heading span {
+  color: var(--coral);
+}
+
+.signal-quiz-intro {
+  max-width: 560px;
+  margin: 0 auto 28px;
+  color: var(--muted);
+  font-size: var(--text-md);
+  line-height: 1.45;
+  font-weight: 700;
+  text-align: center;
 }
 
 .signal-art {
@@ -1059,4 +1087,27 @@ a {
   .sticky-cta:hover {
     transform: translateY(-2px);
   }
+}
+
+.site-footer {
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.82);
+  padding: 24px 24px 32px;
+  text-align: center;
+  font-size: var(--text-xs);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer-copyright {
+  margin-bottom: 8px !important;
+}
+
+.site-footer a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

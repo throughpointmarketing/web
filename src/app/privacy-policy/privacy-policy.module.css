@@ -1,0 +1,158 @@
+.wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 64px 24px 120px;
+}
+
+.docHead {
+  border-bottom: 2px solid #2f5d50;
+  padding-bottom: 28px;
+  margin-bottom: 40px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2f5d50;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  font-size: 38px;
+  line-height: 1.15;
+  margin: 0 0 12px;
+  font-weight: 400;
+  color: #1f2430;
+}
+
+.meta {
+  color: #5b6270;
+  font-size: 14px;
+}
+
+.toc {
+  background: #f7f8fa;
+  border: 1px solid #dfe2e8;
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin-bottom: 44px;
+}
+
+.tocLabel {
+  margin: 0 0 10px;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #5b6270;
+}
+
+.tocList {
+  margin: 0;
+  padding-left: 20px;
+  columns: 2;
+  column-gap: 32px;
+  font-size: 14px;
+}
+
+.tocList li {
+  margin-bottom: 6px;
+  break-inside: avoid;
+}
+
+.tocList a {
+  color: #1f2430;
+  text-decoration: none;
+  border-bottom: 1px solid #dfe2e8;
+}
+
+.tocList a:hover {
+  border-bottom-color: #2f5d50;
+}
+
+.section h2 {
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 40px 0 14px;
+  color: #1f2430;
+}
+
+.section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 24px 0 8px;
+  color: #1f2430;
+}
+
+.section p,
+.section li {
+  color: #1f2430;
+  line-height: 1.65;
+}
+
+.section ul {
+  padding-left: 22px;
+}
+
+.section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.section th,
+.section td {
+  border: 1px solid #dfe2e8;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.section th {
+  background: #f7f8fa;
+  font-weight: 600;
+}
+
+.callout {
+  background: #f7f8fa;
+  border-left: 3px solid #2f5d50;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 14px;
+  color: #5b6270;
+}
+
+.link {
+  color: #2f5d50;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 32px;
+  color: #071d3d;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 30px;
+  }
+
+  .tocList {
+    columns: 1;
+  }
+
+  .wrap {
+    padding: 40px 18px 80px;
+  }
+}

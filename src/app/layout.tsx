@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { Inter } from "next/font/google";
+import SiteFooter from "@/components/SiteFooter";
 import { siteConfig, siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -88,7 +89,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <GoogleTagManager gtmId={gtmId} />
-      <body>{children}</body>
+      <body>
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
