@@ -311,7 +311,7 @@ export default function SignalScanQuiz() {
                 </div>
               ) : null}
               <Link
-                href="#signal-form"
+                href="#contact"
                 className={styles.cta}
                 onClick={handleCtaClick}
               >

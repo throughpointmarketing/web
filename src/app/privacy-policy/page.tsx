@@ -3,7 +3,7 @@ import styles from "./privacy-policy.module.css";
 
 export default function PrivacyPolicyPage() {
   return (
-    <main style={{ background: "#ffffff", minHeight: "100vh" }}>
+    <section className="bg-background pb-20 pt-28 lg:pt-32">
       <div className={styles.wrap}>
         <Link href="/" className={styles.backLink}>
           ← Back to ThroughPoint Marketing
@@ -417,6 +417,6 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
       </div>
-    </main>
+    </section>
   );
 }

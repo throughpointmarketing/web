@@ -1,18 +1,26 @@
-import type { Metadata, Viewport } from "next";
-import { GoogleTagManager } from "@next/third-parties/google";
-import { Inter } from "next/font/google";
-import SiteFooter from "@/components/SiteFooter";
-import { siteConfig, siteUrl } from "@/lib/site";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next'
+import { GoogleTagManager } from '@next/third-parties/google'
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
+import { siteConfig, siteUrl } from '@/lib/site'
+import './globals.css'
 
 const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-display",
-});
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
 
-const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
-const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? siteConfig.gtmId;
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-jakarta',
+  weight: ['500', '600', '700', '800'],
+  display: 'swap',
+})
+
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? siteConfig.gtmId
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -33,9 +41,9 @@ export const metadata: Metadata = {
     icon: siteConfig.logoPath,
     apple: siteConfig.logoPath,
   },
-  manifest: "/manifest.webmanifest",
+  manifest: '/manifest.webmanifest',
   openGraph: {
-    type: "website",
+    type: 'website',
     locale: siteConfig.locale,
     url: siteUrl,
     siteName: siteConfig.name,
@@ -51,7 +59,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: siteConfig.defaultTitle,
     description: siteConfig.ogDescription,
     images: [siteConfig.ogImagePath],
@@ -62,9 +70,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
     },
   },
   ...(googleSiteVerification
@@ -74,25 +82,26 @@ export const metadata: Metadata = {
         },
       }
     : {}),
-};
+}
 
 export const viewport: Viewport = {
-  themeColor: "#071d3d",
-  colorScheme: "light",
-};
+  themeColor: '#06264a',
+  colorScheme: 'light',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`bg-background ${inter.variable} ${jakarta.variable}`}>
       <GoogleTagManager gtmId={gtmId} />
-      <body>
-        {children}
+      <body className="antialiased">
+        <SiteHeader />
+        <main>{children}</main>
         <SiteFooter />
       </body>
     </html>
-  );
+  )
 }
