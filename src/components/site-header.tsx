@@ -9,7 +9,8 @@ import { cn } from '@/lib/utils'
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
+  { label: 'Company', href: '/about' },
+  { label: 'Learn', href: '/learn' },
 ]
 
 export function SiteHeader() {
@@ -34,16 +35,16 @@ export function SiteHeader() {
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-300',
         scrolled
-          ? 'border-b border-white/10 bg-navy/90 backdrop-blur-xl'
-          : 'border-b border-transparent bg-navy',
+          ? 'bg-light-gray/95 shadow-sm backdrop-blur-xl'
+          : 'bg-light-gray',
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 lg:h-20 lg:px-8">
-        <Link href="/" className="flex items-center" aria-label="ThroughPoint Marketing home">
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-6 px-5 lg:h-28 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center" aria-label="ThroughPoint Marketing home">
           <img
             src="/throughpoint-logo.png"
             alt="ThroughPoint Marketing"
-            className="h-9 w-auto brightness-0 invert lg:h-10"
+            className="h-20 w-auto lg:h-24"
           />
         </Link>
 
@@ -55,8 +56,10 @@ export function SiteHeader() {
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  'rounded-md px-4 py-2 text-sm font-medium transition-colors',
-                  active ? 'text-coral' : 'text-white/80 hover:text-white',
+                  'rounded-md px-4 py-2 text-sm font-semibold transition-colors',
+                  active
+                    ? 'text-coral'
+                    : 'text-navy/75 hover:text-navy',
                 )}
               >
                 {item.label}
@@ -68,7 +71,7 @@ export function SiteHeader() {
         <div className="hidden items-center lg:flex">
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-coral px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-coral-dark"
+            className="inline-flex items-center gap-2 rounded-full bg-coral px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-coral/20 transition-all hover:bg-coral-dark"
           >
             Request Signal Scan
           </Link>
@@ -77,7 +80,7 @@ export function SiteHeader() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-navy transition-colors hover:bg-light-gray lg:hidden"
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
         >
@@ -85,10 +88,9 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div
         className={cn(
-          'overflow-hidden border-t border-white/10 bg-navy transition-[max-height,opacity] duration-300 lg:hidden',
+          'overflow-hidden border-t border-border bg-light-gray transition-[max-height,opacity] duration-300 lg:hidden',
           open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
         )}
       >
@@ -101,8 +103,10 @@ export function SiteHeader() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  'rounded-lg px-3 py-3 text-base font-medium transition-colors',
-                  active ? 'text-coral' : 'text-white/80 hover:bg-white/5 hover:text-white',
+                  'rounded-lg px-3 py-3 text-base font-semibold transition-colors',
+                  active
+                    ? 'text-coral'
+                    : 'text-navy/80 hover:bg-light-gray hover:text-navy',
                 )}
               >
                 {item.label}

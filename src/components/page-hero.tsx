@@ -12,7 +12,7 @@ export function PageHero({
   subtitle?: string
 }) {
   return (
-    <section className="relative overflow-hidden bg-navy pt-28 lg:pt-36">
+    <section className="relative overflow-hidden bg-navy pt-36 lg:pt-44">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.07]"

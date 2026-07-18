@@ -29,7 +29,9 @@
   --color-navy-light: var(--navy-light);
   --color-coral: var(--coral);
   --color-coral-dark: var(--coral-dark);
+  --color-light-coral: var(--light-coral);
   --color-light-gray: var(--light-gray);
+  --color-page-gray: var(--page-gray);
   --color-off-white: var(--off-white);
   --color-medium-gray: var(--medium-gray);
   --color-slate-gray: var(--slate-gray);
@@ -50,18 +52,23 @@
 :root {
   color-scheme: light;
 
+  /* Core brand four */
   --navy: #06264a;
-  --navy-light: #0d3b66;
   --coral: #ff6f61;
-  --coral-dark: #f36b58;
+  --background: #ffffff;
   --light-gray: #f5f6f8;
+
+  /* Extended palette */
+  --navy-light: #0d3b66;
+  --coral-dark: #f36b58;
+  --light-coral: #f6ab9e;
   --off-white: #fafafa;
+  --page-gray: #f2f4f7;
   --medium-gray: #d2d0d2;
   --slate-gray: #9ea1a6;
   --body: #5f6670;
   --charcoal: #3e4148;
 
-  --background: #ffffff;
   --foreground: #06264a;
   --card: #ffffff;
   --card-foreground: #06264a;

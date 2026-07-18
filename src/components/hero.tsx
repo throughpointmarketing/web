@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-light-gray pt-28 lg:pt-32"
+      className="relative overflow-hidden bg-light-gray pt-36 lg:pt-44"
     >
       {/* subtle grid */}
       <div

@@ -13,7 +13,8 @@ function LinkedInIcon({ className }: { className?: string }) {
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
+  { label: 'Company', href: '/about' },
+  { label: 'Learn', href: '/learn' },
   { label: 'Contact', href: '/#contact' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
 ]
